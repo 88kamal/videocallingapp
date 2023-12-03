@@ -1,7 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
-import Navbar from '../components/Navbar';
 
 
 export default function Room() {
@@ -23,7 +22,7 @@ export default function Room() {
             container: element,
             sharedLinks: [{
                 name: 'Copy Link',
-                url: `http://localhost:5174/room/${roomId}`
+                url: `https://videocallingapp-six.vercel.app/${roomId}`
             }],
             scenario: {
                 mode: ZegoUIKitPrebuilt.OneONoneCall
