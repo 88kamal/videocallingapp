@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 
 export default function Home() {
     const [value, setValue] = useState('');
@@ -9,29 +8,22 @@ export default function Home() {
 
     // Handle Join Room Function 
     const handleJoinRoom = useCallback(() => {
+        if(!value){
+            return alert('Please Enter Room Id')
+        }
         navigate(`/room/${value}`);
     })
 
     return (
         <>
-        <Navbar/>
-        <div className='flex justify-center items-center  h-[40em] lg:h-[40em]'>
-            {/* Main Div  */}
-            <div className="">
-                {/* Video Calling Image Tag  */}
-                <div className="flex justify-center mb-10">
-                    {/* Image Tag  */}
-                    <img
-                        src="https://cdn-icons-png.flaticon.com/128/8630/8630481.png"
-                        alt="img"
-                    />
-                </div>
-
-                {/* Input And Button  */}
-                <div className="input bg-gray-800 flex items-center gap-2 rounded-lg border
+            <div className='flex justify-center items-center h-screen bg-gray-900'>
+                {/* Main Div  */}
+                <div className="">                   
+                    {/* Input And Button  */}
+                    {/* <div className="input bg-gray-800 flex items-center gap-2 rounded-lg border
                  border-gray-600">
 
-                    {/* Input Tag  */}
+                    Input Tag 
                     <input
                         type="text"
                         value={value}
@@ -41,7 +33,7 @@ export default function Home() {
                         placeholder='Enter Room Code'
                     />
 
-                    {/* Button Tag  */}
+                    Button Tag 
                     <button
                         type='button'
                         onClick={handleJoinRoom}
@@ -49,10 +41,38 @@ export default function Home() {
                     >
                         Join
                     </button>
+                </div> */}
+
+                    {/* Input And Button  */}
+                    <div className="input bg-gray-950 px-5 py-6 rounded-xl border border-gray-700 shadow-md ">
+
+                        <div className="flex justify-center mb-8">
+                            <img className='w-20' src="https://cdn-icons-png.flaticon.com/128/5535/5535652.png" alt="" />
+                        </div>
+
+                        {/* Input Tag */}
+                        <input
+                            type="text"
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
+                            className='bg-gray-950  rounded-lg border
+                            border-gray-700 py-2 px-2 outline-none w-80 lg:w-96 text-lg text-white mb-5'
+                            placeholder='Enter Room Code'
+                        />
+                        <br />
+                        {/* Button Tag */}
+                        <button
+                            type='button'
+                            onClick={handleJoinRoom}
+                            className=' bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-300 font-bold px-8 py-2 rounded-lg w-full'
+                        >
+                            Join Room
+                        </button>
+                    </div>
+
                 </div>
             </div>
-        </div>
         </>
-        
+
     )
 }
